@@ -1,0 +1,52 @@
+pipeline {
+    agent any
+    stages {
+        stage('git-clone') {
+            steps {
+                // Clones the source code from the repository
+                git branch: 'main', url: 'https://github.com/dhruva1414/spring-framework-petclinic.git'
+            }
+        }
+        stage('package') {
+            steps {
+                // Compiles and creates the .war file
+                sh 'mvn package'
+            }
+        }
+        stage('sonarqube') {
+            steps {
+                // Ensure 'Sonarqube' matches the name in Manage Jenkins > System
+                withSonarQubeEnv(installationName: 'Sonarqube', credentialsId: 'jenkin-sonaeqube-token') {
+                    sh 'mvn verify sonar:sonar'
+                }
+            }
+        }
+        stage('nexus') {
+            steps {
+                // Uploads the artifact to the specified Nexus repository
+                nexusArtifactUploader artifacts: [[
+                    artifactId: 'spring-framework-petclinic',
+                    classifier: '',
+                    file: 'target/petclinic.war', // Corrected path to point inside the target folder
+                    type: 'war'
+                ]],
+                credentialsId: 'nexus',
+                groupId: 'org.springframework.samples',
+                nexusUrl: '13.127.192.178:8081',
+                nexusVersion: 'nexus3',
+                protocol: 'http',
+                repository: 'spring-petclinic',
+                version: '6.2.8'
+            }
+        }
+        stage('tomcat') {
+            steps {
+                // Uses SSH agent to securely copy the war file to the Tomcat server
+                sshagent(['tomcat']) {
+                    // Updated with correct Public IP and Tomcat 10.1.52 directory path
+                    sh 'scp -o StrictHostKeyChecking=no target/petclinic.war ubuntu@13.200.21.19:/home/ubuntu/apache-tomcat-10.1.52/webapps'
+                }
+            }
+        }
+    }
+}
