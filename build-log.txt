@@ -1,0 +1,746 @@
+Started by user dhruva m
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/lib/jenkins/workspace/CI-CD Project
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (git-clone)
+[Pipeline] git
+The recommended git tool is: NONE
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/lib/jenkins/workspace/CI-CD Project/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/dhruva1414/spring-framework-petclinic.git # timeout=10
+Fetching upstream changes from https://github.com/dhruva1414/spring-framework-petclinic.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.43.0'
+ > git fetch --tags --force --progress -- https://github.com/dhruva1414/spring-framework-petclinic.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision 5c5f13371e506e0a1272842f69e92e91262abf18 (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f 5c5f13371e506e0a1272842f69e92e91262abf18 # timeout=10
+ > git branch -a -v --no-abbrev # timeout=10
+ > git branch -D main # timeout=10
+ > git checkout -b main 5c5f13371e506e0a1272842f69e92e91262abf18 # timeout=10
+Commit message: "Bump com.jayway.jsonpath:json-path from 2.9.0 to 2.10.0 (#232)"
+ > git rev-list --no-walk 5c5f13371e506e0a1272842f69e92e91262abf18 # timeout=10
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (package)
+[Pipeline] sh
++ mvn package
+[[1;34mINFO[m] Scanning for projects...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m-------< [0;36morg.springframework.samples:spring-framework-petclinic[0;1m >-------[m
+[[1;34mINFO[m] [1mBuilding Spring Framework Petclinic 6.2.8[m
+[[1;34mINFO[m] [1m--------------------------------[ war ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-enforcer-plugin:3.6.2:enforce[m [1m(enforce-maven)[m @ [36mspring-framework-petclinic[0;1m ---[m
+[[1;34mINFO[m] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[[1;34mINFO[m] Rule 1: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mjacoco-maven-plugin:0.8.13:prepare-agent[m [1m(prepare-agent)[m @ [36mspring-framework-petclinic[0;1m ---[m
+[[1;34mINFO[m] argLine set to "-javaagent:/var/lib/jenkins/.m2/repository/org/jacoco/org.jacoco.agent/0.8.13/org.jacoco.agent-0.8.13-runtime.jar=destfile=/var/lib/jenkins/workspace/CI-CD Project/target/jacoco.exec"
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.3.1:resources[m [1m(default-resources)[m @ [36mspring-framework-petclinic[0;1m ---[m
+[[1;34mINFO[m] Copying 21 resources from src/main/resources to target/classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.14.0:compile[m [1m(default-compile)[m @ [36mspring-framework-petclinic[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.3.1:testResources[m [1m(default-testResources)[m @ [36mspring-framework-petclinic[0;1m ---[m
+[[1;34mINFO[m] Copying 11 resources from src/test/java to target/test-classes
+[[1;34mINFO[m] Copying 1 resource from src/test/resources to target/test-classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.14.0:testCompile[m [1m(default-testCompile)[m @ [36mspring-framework-petclinic[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-surefire-plugin:3.5.0:test[m [1m(default-test)[m @ [36mspring-framework-petclinic[0;1m ---[m
+[[1;34mINFO[m] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[[1;34mINFO[m] 
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m]  T E S T S
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m] Running org.springframework.samples.petclinic.web.[1mVetControllerTests[m
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+INFO  Version - HV000001: Hibernate Validator 8.0.2.Final
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 1 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.650 s -- in org.springframework.samples.petclinic.web.[1mVetControllerTests[m
+[[1;34mINFO[m] Running org.springframework.samples.petclinic.web.[1mCrashControllerTests[m
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 5 ms
+WARN  warn - Resolved [java.lang.RuntimeException: Expected: controller used to showcase what happens when an exception is thrown]
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.073 s -- in org.springframework.samples.petclinic.web.[1mCrashControllerTests[m
+[[1;34mINFO[m] Running org.springframework.samples.petclinic.web.[1mPetControllerTests[m
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 1 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.203 s -- in org.springframework.samples.petclinic.web.[1mPetControllerTests[m
+[[1;34mINFO[m] Running org.springframework.samples.petclinic.web.[1mOwnerControllerTests[m
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 1 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.662 s -- in org.springframework.samples.petclinic.web.[1mOwnerControllerTests[m
+[[1;34mINFO[m] Running org.springframework.samples.petclinic.web.[1mPetTypeFormatterTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.050 s -- in org.springframework.samples.petclinic.web.[1mPetTypeFormatterTests[m
+[[1;34mINFO[m] Running org.springframework.samples.petclinic.web.[1mVisitControllerTests[m
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.102 s -- in org.springframework.samples.petclinic.web.[1mVisitControllerTests[m
+[[1;34mINFO[m] Running org.springframework.samples.petclinic.service.[1mClinicServiceSpringDataJpaTests[m
+INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 62 ms. Found 4 JPA repository interfaces.
+INFO  LogHelper - HHH000204: Processing PersistenceUnitInfo [name: petclinic]
+INFO  Version - HHH000412: Hibernate ORM core version 6.6.4.Final
+INFO  RegionFactoryInitiator - HHH000025: Second-level cache region factory [org.hibernate.cache.jcache.internal.JCacheRegionFactory]
+INFO  SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+WARN  deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+INFO  pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'org.apache.tomcat.jdbc.pool.DataSource@baee849{ConnectionPool[defaultAutoCommit=null; defaultReadOnly=null; defaultTransactionIsolation=-1; defaultCatalog=null; driverClassName=org.h2.Driver; maxActive=100; maxIdle=100; minIdle=10; initialSize=10; maxWait=30000; testOnBorrow=false; testOnReturn=false; timeBetweenEvictionRunsMillis=5000; numTestsPerEvictionRun=0; minEvictableIdleTimeMillis=60000; testWhileIdle=false; testOnConnect=false; password=********; url=jdbc:h2:mem:petclinic; username=sa; validationQuery=null; validationQueryTimeout=-1; validatorClassName=null; validationInterval=3000; accessToUnderlyingConnectionAllowed=true; removeAbandoned=false; removeAbandonedTimeout=60; logAbandoned=false; connectionProperties=null; initSQL=null; jdbcInterceptors=null; jmxEnabled=true; fairQueue=true; useEquals=true; abandonWhenPercentageFull=0; maxAge=0; useLock=false; dataSource=null; dataSourceJNDI=null; suspectTimeout=0; alternateUsernameAllowed=false; commitOnReturn=false; rollbackOnReturn=false; useDisposableConnectionFacade=true; logValidationErrors=false; propagateInterruptState=false; ignoreExceptionOnPreLoad=false; useStatementFacade=true; ]}']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+INFO  LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'petclinic'
+INFO  QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+Hibernate: select v1_0.id,v1_0.first_name,v1_0.last_name from vets v1_0
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select distinct o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.last_name like ? escape ''
+Hibernate: select pt1_0.id,pt1_0.name from types pt1_0 where pt1_0.id=?
+Hibernate: select pt1_0.id,pt1_0.name from types pt1_0 where pt1_0.id=?
+Hibernate: select v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from visits v1_0 where v1_0.pet_id=?
+Hibernate: select v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from visits v1_0 where v1_0.pet_id=?
+Hibernate: select distinct o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.last_name like ? escape ''
+Hibernate: select p1_0.id,p1_0.birth_date,p1_0.name,o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,o1_0.telephone,t1_0.id,t1_0.name,v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from pets p1_0 left join owners o1_0 on o1_0.id=p1_0.owner_id left join types t1_0 on t1_0.id=p1_0.type_id left join visits v1_0 on p1_0.id=v1_0.pet_id where p1_0.id=?
+Hibernate: insert into visits (visit_date,description,pet_id,id) values (?,?,?,default)
+Hibernate: select o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.id=?
+Hibernate: select pt1_0.id,pt1_0.name from types pt1_0 where pt1_0.id=?
+Hibernate: select v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from visits v1_0 where v1_0.pet_id=?
+Hibernate: update owners set address=?,city=?,first_name=?,last_name=?,telephone=? where id=?
+Hibernate: select o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.id=?
+Hibernate: select v1_0.id,v1_0.visit_date,v1_0.description,v1_0.pet_id from visits v1_0 left join pets p1_0 on p1_0.id=v1_0.pet_id where p1_0.id=?
+Hibernate: select p1_0.id,p1_0.birth_date,p1_0.name,o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,o1_0.telephone,t1_0.id,t1_0.name,v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from pets p1_0 left join owners o1_0 on o1_0.id=p1_0.owner_id left join types t1_0 on t1_0.id=p1_0.type_id left join visits v1_0 on p1_0.id=v1_0.pet_id where p1_0.id=?
+Hibernate: select o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.id=?
+Hibernate: select pt1_0.id,pt1_0.name from types pt1_0 where pt1_0.id=?
+Hibernate: select v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from visits v1_0 where v1_0.pet_id=?
+Hibernate: select v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from visits v1_0 where v1_0.pet_id=?
+Hibernate: select pt1_0.id,pt1_0.name from types pt1_0 order by pt1_0.name
+Hibernate: insert into pets (birth_date,name,owner_id,type_id,id) values (?,?,?,?,default)
+Hibernate: select o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.id=?
+Hibernate: select distinct o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.last_name like ? escape ''
+Hibernate: insert into owners (address,city,first_name,last_name,telephone,id) values (?,?,?,?,?,default)
+Hibernate: select distinct o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.last_name like ? escape ''
+Hibernate: select o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.id=?
+Hibernate: select pt1_0.id,pt1_0.name from types pt1_0 where pt1_0.id=?
+Hibernate: select v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from visits v1_0 where v1_0.pet_id=?
+Hibernate: select p1_0.id,p1_0.birth_date,p1_0.name,o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,o1_0.telephone,t1_0.id,t1_0.name,v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from pets p1_0 left join owners o1_0 on o1_0.id=p1_0.owner_id left join types t1_0 on t1_0.id=p1_0.type_id left join visits v1_0 on p1_0.id=v1_0.pet_id where p1_0.id=?
+Hibernate: select pt1_0.id,pt1_0.name from types pt1_0 order by pt1_0.name
+Hibernate: select p1_0.id,p1_0.birth_date,p1_0.name,o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,o1_0.telephone,t1_0.id,t1_0.name,v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from pets p1_0 left join owners o1_0 on o1_0.id=p1_0.owner_id left join types t1_0 on t1_0.id=p1_0.type_id left join visits v1_0 on p1_0.id=v1_0.pet_id where p1_0.id=?
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.539 s -- in org.springframework.samples.petclinic.service.[1mClinicServiceSpringDataJpaTests[m
+[[1;34mINFO[m] Running org.springframework.samples.petclinic.service.[1mClinicServiceJdbcTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.405 s -- in org.springframework.samples.petclinic.service.[1mClinicServiceJdbcTests[m
+[[1;34mINFO[m] Running org.springframework.samples.petclinic.service.[1mClinicServiceJpaTests[m
+INFO  LogHelper - HHH000204: Processing PersistenceUnitInfo [name: petclinic]
+INFO  RegionFactoryInitiator - HHH000025: Second-level cache region factory [org.hibernate.cache.jcache.internal.JCacheRegionFactory]
+INFO  SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+WARN  deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+INFO  pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'org.apache.tomcat.jdbc.pool.DataSource@237ab619{ConnectionPool[defaultAutoCommit=null; defaultReadOnly=null; defaultTransactionIsolation=-1; defaultCatalog=null; driverClassName=org.h2.Driver; maxActive=100; maxIdle=100; minIdle=10; initialSize=10; maxWait=30000; testOnBorrow=false; testOnReturn=false; timeBetweenEvictionRunsMillis=5000; numTestsPerEvictionRun=0; minEvictableIdleTimeMillis=60000; testWhileIdle=false; testOnConnect=false; password=********; url=jdbc:h2:mem:petclinic; username=sa; validationQuery=null; validationQueryTimeout=-1; validatorClassName=null; validationInterval=3000; accessToUnderlyingConnectionAllowed=true; removeAbandoned=false; removeAbandonedTimeout=60; logAbandoned=false; connectionProperties=null; initSQL=null; jdbcInterceptors=null; jmxEnabled=true; fairQueue=true; useEquals=true; abandonWhenPercentageFull=0; maxAge=0; useLock=false; dataSource=null; dataSourceJNDI=null; suspectTimeout=0; alternateUsernameAllowed=false; commitOnReturn=false; rollbackOnReturn=false; useDisposableConnectionFacade=true; logValidationErrors=false; propagateInterruptState=false; ignoreExceptionOnPreLoad=false; useStatementFacade=true; ]}']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+INFO  LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'petclinic'
+Hibernate: select distinct v1_0.id,v1_0.first_name,v1_0.last_name,s1_0.vet_id,s1_1.id,s1_1.name from vets v1_0 left join vet_specialties s1_0 on v1_0.id=s1_0.vet_id left join specialties s1_1 on s1_1.id=s1_0.specialty_id order by v1_0.last_name,v1_0.first_name
+Hibernate: select distinct o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.last_name like ? escape ''
+Hibernate: select pt1_0.id,pt1_0.name from types pt1_0 where pt1_0.id=?
+Hibernate: select pt1_0.id,pt1_0.name from types pt1_0 where pt1_0.id=?
+Hibernate: select v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from visits v1_0 where v1_0.pet_id=?
+Hibernate: select v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from visits v1_0 where v1_0.pet_id=?
+Hibernate: select distinct o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.last_name like ? escape ''
+Hibernate: select p1_0.id,p1_0.birth_date,p1_0.name,o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,o1_0.telephone,t1_0.id,t1_0.name,v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from pets p1_0 left join owners o1_0 on o1_0.id=p1_0.owner_id left join types t1_0 on t1_0.id=p1_0.type_id left join visits v1_0 on p1_0.id=v1_0.pet_id where p1_0.id=?
+Hibernate: insert into visits (visit_date,description,pet_id,id) values (?,?,?,default)
+Hibernate: select o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.id=?
+Hibernate: select pt1_0.id,pt1_0.name from types pt1_0 where pt1_0.id=?
+Hibernate: select v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from visits v1_0 where v1_0.pet_id=?
+Hibernate: update owners set address=?,city=?,first_name=?,last_name=?,telephone=? where id=?
+Hibernate: select o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.id=?
+Hibernate: select v1_0.id,v1_0.visit_date,v1_0.description,v1_0.pet_id from visits v1_0 where v1_0.pet_id=?
+Hibernate: select p1_0.id,p1_0.birth_date,p1_0.name,o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,o1_0.telephone,t1_0.id,t1_0.name,v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from pets p1_0 left join owners o1_0 on o1_0.id=p1_0.owner_id left join types t1_0 on t1_0.id=p1_0.type_id left join visits v1_0 on p1_0.id=v1_0.pet_id where p1_0.id=?
+Hibernate: select o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.id=?
+Hibernate: select pt1_0.id,pt1_0.name from types pt1_0 where pt1_0.id=?
+Hibernate: select v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from visits v1_0 where v1_0.pet_id=?
+Hibernate: select v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from visits v1_0 where v1_0.pet_id=?
+Hibernate: select pt1_0.id,pt1_0.name from types pt1_0 order by pt1_0.name
+Hibernate: insert into pets (birth_date,name,owner_id,type_id,id) values (?,?,?,?,default)
+Hibernate: select o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.id=?
+Hibernate: select distinct o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.last_name like ? escape ''
+Hibernate: insert into owners (address,city,first_name,last_name,telephone,id) values (?,?,?,?,?,default)
+Hibernate: select distinct o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.last_name like ? escape ''
+Hibernate: select o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.id=?
+Hibernate: select pt1_0.id,pt1_0.name from types pt1_0 where pt1_0.id=?
+Hibernate: select v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from visits v1_0 where v1_0.pet_id=?
+Hibernate: select p1_0.id,p1_0.birth_date,p1_0.name,o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,o1_0.telephone,t1_0.id,t1_0.name,v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from pets p1_0 left join owners o1_0 on o1_0.id=p1_0.owner_id left join types t1_0 on t1_0.id=p1_0.type_id left join visits v1_0 on p1_0.id=v1_0.pet_id where p1_0.id=?
+Hibernate: select pt1_0.id,pt1_0.name from types pt1_0 order by pt1_0.name
+Hibernate: select p1_0.id,p1_0.birth_date,p1_0.name,o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,o1_0.telephone,t1_0.id,t1_0.name,v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from pets p1_0 left join owners o1_0 on o1_0.id=p1_0.owner_id left join types t1_0 on t1_0.id=p1_0.type_id left join visits v1_0 on p1_0.id=v1_0.pet_id where p1_0.id=?
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.692 s -- in org.springframework.samples.petclinic.service.[1mClinicServiceJpaTests[m
+[[1;34mINFO[m] Running org.springframework.samples.petclinic.model.[1mValidatorTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.013 s -- in org.springframework.samples.petclinic.model.[1mValidatorTests[m
+INFO  LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'petclinic'
+[[1;34mINFO[m] 
+[[1;34mINFO[m] Results:
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1;32mTests run: 62, Failures: 0, Errors: 0, Skipped: 0[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mjacoco-maven-plugin:0.8.13:report[m [1m(report)[m @ [36mspring-framework-petclinic[0;1m ---[m
+[[1;34mINFO[m] Loading execution data file /var/lib/jenkins/workspace/CI-CD Project/target/jacoco.exec
+[[1;34mINFO[m] Analyzed bundle 'Spring Framework Petclinic' with 36 classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-war-plugin:3.4.0:war[m [1m(default-war)[m @ [36mspring-framework-petclinic[0;1m ---[m
+[[1;34mINFO[m] Packaging webapp
+[[1;34mINFO[m] Assembling webapp [spring-framework-petclinic] in [/var/lib/jenkins/workspace/CI-CD Project/target/petclinic]
+[[1;34mINFO[m] Processing war project
+[[1;34mINFO[m] Copying webapp resources [/var/lib/jenkins/workspace/CI-CD Project/src/main/webapp]
+[[1;34mINFO[m] Building war: /var/lib/jenkins/workspace/CI-CD Project/target/petclinic.war
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;32mBUILD SUCCESS[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  17.299 s
+[[1;34mINFO[m] Finished at: 2026-02-12T12:40:01Z
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (sonarqube)
+[Pipeline] withSonarQubeEnv
+Injecting SonarQube environment variables using the configuration: Sonarqube
+[Pipeline] {
+[Pipeline] sh
++ mvn verify sonar:sonar
+[[1;34mINFO[m] Scanning for projects...
+[[1;33mWARNING[m] The artifact org.codehaus.mojo:sonar-maven-plugin:jar:4.0.0.4121 has been relocated to org.sonarsource.scanner.maven:sonar-maven-plugin:jar:4.0.0.4121: SonarQube plugin was moved to SonarSource organisation
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m-------< [0;36morg.springframework.samples:spring-framework-petclinic[0;1m >-------[m
+[[1;34mINFO[m] [1mBuilding Spring Framework Petclinic 6.2.8[m
+[[1;34mINFO[m] [1m--------------------------------[ war ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-enforcer-plugin:3.6.2:enforce[m [1m(enforce-maven)[m @ [36mspring-framework-petclinic[0;1m ---[m
+[[1;34mINFO[m] Rule 0: org.apache.maven.enforcer.rules.version.RequireMavenVersion passed
+[[1;34mINFO[m] Rule 1: org.apache.maven.enforcer.rules.version.RequireJavaVersion passed
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mjacoco-maven-plugin:0.8.13:prepare-agent[m [1m(prepare-agent)[m @ [36mspring-framework-petclinic[0;1m ---[m
+[[1;34mINFO[m] argLine set to "-javaagent:/var/lib/jenkins/.m2/repository/org/jacoco/org.jacoco.agent/0.8.13/org.jacoco.agent-0.8.13-runtime.jar=destfile=/var/lib/jenkins/workspace/CI-CD Project/target/jacoco.exec"
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.3.1:resources[m [1m(default-resources)[m @ [36mspring-framework-petclinic[0;1m ---[m
+[[1;34mINFO[m] Copying 21 resources from src/main/resources to target/classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.14.0:compile[m [1m(default-compile)[m @ [36mspring-framework-petclinic[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:3.3.1:testResources[m [1m(default-testResources)[m @ [36mspring-framework-petclinic[0;1m ---[m
+[[1;34mINFO[m] Copying 11 resources from src/test/java to target/test-classes
+[[1;34mINFO[m] Copying 1 resource from src/test/resources to target/test-classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.14.0:testCompile[m [1m(default-testCompile)[m @ [36mspring-framework-petclinic[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-surefire-plugin:3.5.0:test[m [1m(default-test)[m @ [36mspring-framework-petclinic[0;1m ---[m
+[[1;34mINFO[m] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[[1;34mINFO[m] 
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m]  T E S T S
+[[1;34mINFO[m] -------------------------------------------------------
+[[1;34mINFO[m] Running org.springframework.samples.petclinic.web.[1mVetControllerTests[m
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+INFO  Version - HV000001: Hibernate Validator 8.0.2.Final
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 1 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.040 s -- in org.springframework.samples.petclinic.web.[1mVetControllerTests[m
+[[1;34mINFO[m] Running org.springframework.samples.petclinic.web.[1mCrashControllerTests[m
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+WARN  warn - Resolved [java.lang.RuntimeException: Expected: controller used to showcase what happens when an exception is thrown]
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.064 s -- in org.springframework.samples.petclinic.web.[1mCrashControllerTests[m
+[[1;34mINFO[m] Running org.springframework.samples.petclinic.web.[1mPetControllerTests[m
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m6[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.166 s -- in org.springframework.samples.petclinic.web.[1mPetControllerTests[m
+[[1;34mINFO[m] Running org.springframework.samples.petclinic.web.[1mOwnerControllerTests[m
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 1 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.511 s -- in org.springframework.samples.petclinic.web.[1mOwnerControllerTests[m
+[[1;34mINFO[m] Running org.springframework.samples.petclinic.web.[1mPetTypeFormatterTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m3[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.037 s -- in org.springframework.samples.petclinic.web.[1mPetTypeFormatterTests[m
+[[1;34mINFO[m] Running org.springframework.samples.petclinic.web.[1mVisitControllerTests[m
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+INFO  MockServletContext - Initializing Spring TestDispatcherServlet ''
+INFO  TestDispatcherServlet - Initializing Servlet ''
+INFO  TestDispatcherServlet - Completed initialization in 0 ms
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m4[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.063 s -- in org.springframework.samples.petclinic.web.[1mVisitControllerTests[m
+[[1;34mINFO[m] Running org.springframework.samples.petclinic.service.[1mClinicServiceSpringDataJpaTests[m
+INFO  RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+INFO  RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 47 ms. Found 4 JPA repository interfaces.
+INFO  LogHelper - HHH000204: Processing PersistenceUnitInfo [name: petclinic]
+INFO  Version - HHH000412: Hibernate ORM core version 6.6.4.Final
+INFO  RegionFactoryInitiator - HHH000025: Second-level cache region factory [org.hibernate.cache.jcache.internal.JCacheRegionFactory]
+INFO  SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+WARN  deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+INFO  pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'org.apache.tomcat.jdbc.pool.DataSource@baee849{ConnectionPool[defaultAutoCommit=null; defaultReadOnly=null; defaultTransactionIsolation=-1; defaultCatalog=null; driverClassName=org.h2.Driver; maxActive=100; maxIdle=100; minIdle=10; initialSize=10; maxWait=30000; testOnBorrow=false; testOnReturn=false; timeBetweenEvictionRunsMillis=5000; numTestsPerEvictionRun=0; minEvictableIdleTimeMillis=60000; testWhileIdle=false; testOnConnect=false; password=********; url=jdbc:h2:mem:petclinic; username=sa; validationQuery=null; validationQueryTimeout=-1; validatorClassName=null; validationInterval=3000; accessToUnderlyingConnectionAllowed=true; removeAbandoned=false; removeAbandonedTimeout=60; logAbandoned=false; connectionProperties=null; initSQL=null; jdbcInterceptors=null; jmxEnabled=true; fairQueue=true; useEquals=true; abandonWhenPercentageFull=0; maxAge=0; useLock=false; dataSource=null; dataSourceJNDI=null; suspectTimeout=0; alternateUsernameAllowed=false; commitOnReturn=false; rollbackOnReturn=false; useDisposableConnectionFacade=true; logValidationErrors=false; propagateInterruptState=false; ignoreExceptionOnPreLoad=false; useStatementFacade=true; ]}']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+INFO  LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'petclinic'
+INFO  QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+Hibernate: select v1_0.id,v1_0.first_name,v1_0.last_name from vets v1_0
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select s1_0.vet_id,s1_1.id,s1_1.name from vet_specialties s1_0 join specialties s1_1 on s1_1.id=s1_0.specialty_id where s1_0.vet_id=?
+Hibernate: select distinct o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.last_name like ? escape ''
+Hibernate: select pt1_0.id,pt1_0.name from types pt1_0 where pt1_0.id=?
+Hibernate: select pt1_0.id,pt1_0.name from types pt1_0 where pt1_0.id=?
+Hibernate: select v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from visits v1_0 where v1_0.pet_id=?
+Hibernate: select v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from visits v1_0 where v1_0.pet_id=?
+Hibernate: select distinct o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.last_name like ? escape ''
+Hibernate: select p1_0.id,p1_0.birth_date,p1_0.name,o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,o1_0.telephone,t1_0.id,t1_0.name,v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from pets p1_0 left join owners o1_0 on o1_0.id=p1_0.owner_id left join types t1_0 on t1_0.id=p1_0.type_id left join visits v1_0 on p1_0.id=v1_0.pet_id where p1_0.id=?
+Hibernate: insert into visits (visit_date,description,pet_id,id) values (?,?,?,default)
+Hibernate: select o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.id=?
+Hibernate: select pt1_0.id,pt1_0.name from types pt1_0 where pt1_0.id=?
+Hibernate: select v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from visits v1_0 where v1_0.pet_id=?
+Hibernate: update owners set address=?,city=?,first_name=?,last_name=?,telephone=? where id=?
+Hibernate: select o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.id=?
+Hibernate: select v1_0.id,v1_0.visit_date,v1_0.description,v1_0.pet_id from visits v1_0 left join pets p1_0 on p1_0.id=v1_0.pet_id where p1_0.id=?
+Hibernate: select p1_0.id,p1_0.birth_date,p1_0.name,o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,o1_0.telephone,t1_0.id,t1_0.name,v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from pets p1_0 left join owners o1_0 on o1_0.id=p1_0.owner_id left join types t1_0 on t1_0.id=p1_0.type_id left join visits v1_0 on p1_0.id=v1_0.pet_id where p1_0.id=?
+Hibernate: select o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.id=?
+Hibernate: select pt1_0.id,pt1_0.name from types pt1_0 where pt1_0.id=?
+Hibernate: select v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from visits v1_0 where v1_0.pet_id=?
+Hibernate: select v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from visits v1_0 where v1_0.pet_id=?
+Hibernate: select pt1_0.id,pt1_0.name from types pt1_0 order by pt1_0.name
+Hibernate: insert into pets (birth_date,name,owner_id,type_id,id) values (?,?,?,?,default)
+Hibernate: select o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.id=?
+Hibernate: select distinct o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.last_name like ? escape ''
+Hibernate: insert into owners (address,city,first_name,last_name,telephone,id) values (?,?,?,?,?,default)
+Hibernate: select distinct o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.last_name like ? escape ''
+Hibernate: select o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.id=?
+Hibernate: select pt1_0.id,pt1_0.name from types pt1_0 where pt1_0.id=?
+Hibernate: select v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from visits v1_0 where v1_0.pet_id=?
+Hibernate: select p1_0.id,p1_0.birth_date,p1_0.name,o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,o1_0.telephone,t1_0.id,t1_0.name,v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from pets p1_0 left join owners o1_0 on o1_0.id=p1_0.owner_id left join types t1_0 on t1_0.id=p1_0.type_id left join visits v1_0 on p1_0.id=v1_0.pet_id where p1_0.id=?
+Hibernate: select pt1_0.id,pt1_0.name from types pt1_0 order by pt1_0.name
+Hibernate: select p1_0.id,p1_0.birth_date,p1_0.name,o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,o1_0.telephone,t1_0.id,t1_0.name,v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from pets p1_0 left join owners o1_0 on o1_0.id=p1_0.owner_id left join types t1_0 on t1_0.id=p1_0.type_id left join visits v1_0 on p1_0.id=v1_0.pet_id where p1_0.id=?
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.285 s -- in org.springframework.samples.petclinic.service.[1mClinicServiceSpringDataJpaTests[m
+[[1;34mINFO[m] Running org.springframework.samples.petclinic.service.[1mClinicServiceJdbcTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.384 s -- in org.springframework.samples.petclinic.service.[1mClinicServiceJdbcTests[m
+[[1;34mINFO[m] Running org.springframework.samples.petclinic.service.[1mClinicServiceJpaTests[m
+INFO  LogHelper - HHH000204: Processing PersistenceUnitInfo [name: petclinic]
+INFO  RegionFactoryInitiator - HHH000025: Second-level cache region factory [org.hibernate.cache.jcache.internal.JCacheRegionFactory]
+INFO  SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+WARN  deprecation - HHH90000025: H2Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+INFO  pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'org.apache.tomcat.jdbc.pool.DataSource@237ab619{ConnectionPool[defaultAutoCommit=null; defaultReadOnly=null; defaultTransactionIsolation=-1; defaultCatalog=null; driverClassName=org.h2.Driver; maxActive=100; maxIdle=100; minIdle=10; initialSize=10; maxWait=30000; testOnBorrow=false; testOnReturn=false; timeBetweenEvictionRunsMillis=5000; numTestsPerEvictionRun=0; minEvictableIdleTimeMillis=60000; testWhileIdle=false; testOnConnect=false; password=********; url=jdbc:h2:mem:petclinic; username=sa; validationQuery=null; validationQueryTimeout=-1; validatorClassName=null; validationInterval=3000; accessToUnderlyingConnectionAllowed=true; removeAbandoned=false; removeAbandonedTimeout=60; logAbandoned=false; connectionProperties=null; initSQL=null; jdbcInterceptors=null; jmxEnabled=true; fairQueue=true; useEquals=true; abandonWhenPercentageFull=0; maxAge=0; useLock=false; dataSource=null; dataSourceJNDI=null; suspectTimeout=0; alternateUsernameAllowed=false; commitOnReturn=false; rollbackOnReturn=false; useDisposableConnectionFacade=true; logValidationErrors=false; propagateInterruptState=false; ignoreExceptionOnPreLoad=false; useStatementFacade=true; ]}']
+	Database driver: undefined/unknown
+	Database version: 2.3.232
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+INFO  JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+INFO  LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'petclinic'
+Hibernate: select distinct v1_0.id,v1_0.first_name,v1_0.last_name,s1_0.vet_id,s1_1.id,s1_1.name from vets v1_0 left join vet_specialties s1_0 on v1_0.id=s1_0.vet_id left join specialties s1_1 on s1_1.id=s1_0.specialty_id order by v1_0.last_name,v1_0.first_name
+Hibernate: select distinct o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.last_name like ? escape ''
+Hibernate: select pt1_0.id,pt1_0.name from types pt1_0 where pt1_0.id=?
+Hibernate: select pt1_0.id,pt1_0.name from types pt1_0 where pt1_0.id=?
+Hibernate: select v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from visits v1_0 where v1_0.pet_id=?
+Hibernate: select v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from visits v1_0 where v1_0.pet_id=?
+Hibernate: select distinct o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.last_name like ? escape ''
+Hibernate: select p1_0.id,p1_0.birth_date,p1_0.name,o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,o1_0.telephone,t1_0.id,t1_0.name,v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from pets p1_0 left join owners o1_0 on o1_0.id=p1_0.owner_id left join types t1_0 on t1_0.id=p1_0.type_id left join visits v1_0 on p1_0.id=v1_0.pet_id where p1_0.id=?
+Hibernate: insert into visits (visit_date,description,pet_id,id) values (?,?,?,default)
+Hibernate: select o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.id=?
+Hibernate: select pt1_0.id,pt1_0.name from types pt1_0 where pt1_0.id=?
+Hibernate: select v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from visits v1_0 where v1_0.pet_id=?
+Hibernate: update owners set address=?,city=?,first_name=?,last_name=?,telephone=? where id=?
+Hibernate: select o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.id=?
+Hibernate: select v1_0.id,v1_0.visit_date,v1_0.description,v1_0.pet_id from visits v1_0 where v1_0.pet_id=?
+Hibernate: select p1_0.id,p1_0.birth_date,p1_0.name,o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,o1_0.telephone,t1_0.id,t1_0.name,v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from pets p1_0 left join owners o1_0 on o1_0.id=p1_0.owner_id left join types t1_0 on t1_0.id=p1_0.type_id left join visits v1_0 on p1_0.id=v1_0.pet_id where p1_0.id=?
+Hibernate: select o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.id=?
+Hibernate: select pt1_0.id,pt1_0.name from types pt1_0 where pt1_0.id=?
+Hibernate: select v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from visits v1_0 where v1_0.pet_id=?
+Hibernate: select v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from visits v1_0 where v1_0.pet_id=?
+Hibernate: select pt1_0.id,pt1_0.name from types pt1_0 order by pt1_0.name
+Hibernate: insert into pets (birth_date,name,owner_id,type_id,id) values (?,?,?,?,default)
+Hibernate: select o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.id=?
+Hibernate: select distinct o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.last_name like ? escape ''
+Hibernate: insert into owners (address,city,first_name,last_name,telephone,id) values (?,?,?,?,?,default)
+Hibernate: select distinct o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.last_name like ? escape ''
+Hibernate: select o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,p1_0.owner_id,p1_0.id,p1_0.birth_date,p1_0.name,p1_0.type_id,o1_0.telephone from owners o1_0 left join pets p1_0 on o1_0.id=p1_0.owner_id where o1_0.id=?
+Hibernate: select pt1_0.id,pt1_0.name from types pt1_0 where pt1_0.id=?
+Hibernate: select v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from visits v1_0 where v1_0.pet_id=?
+Hibernate: select p1_0.id,p1_0.birth_date,p1_0.name,o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,o1_0.telephone,t1_0.id,t1_0.name,v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from pets p1_0 left join owners o1_0 on o1_0.id=p1_0.owner_id left join types t1_0 on t1_0.id=p1_0.type_id left join visits v1_0 on p1_0.id=v1_0.pet_id where p1_0.id=?
+Hibernate: select pt1_0.id,pt1_0.name from types pt1_0 order by pt1_0.name
+Hibernate: select p1_0.id,p1_0.birth_date,p1_0.name,o1_0.id,o1_0.address,o1_0.city,o1_0.first_name,o1_0.last_name,o1_0.telephone,t1_0.id,t1_0.name,v1_0.pet_id,v1_0.id,v1_0.visit_date,v1_0.description from pets p1_0 left join owners o1_0 on o1_0.id=p1_0.owner_id left join types t1_0 on t1_0.id=p1_0.type_id left join visits v1_0 on p1_0.id=v1_0.pet_id where p1_0.id=?
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m11[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.831 s -- in org.springframework.samples.petclinic.service.[1mClinicServiceJpaTests[m
+[[1;34mINFO[m] Running org.springframework.samples.petclinic.model.[1mValidatorTests[m
+[[1;34mINFO[m] [1;32mTests run: [0;1;32m1[m, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.020 s -- in org.springframework.samples.petclinic.model.[1mValidatorTests[m
+INFO  LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'petclinic'
+INFO  LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'petclinic'
+[[1;34mINFO[m] 
+[[1;34mINFO[m] Results:
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1;32mTests run: 62, Failures: 0, Errors: 0, Skipped: 0[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mjacoco-maven-plugin:0.8.13:report[m [1m(report)[m @ [36mspring-framework-petclinic[0;1m ---[m
+[[1;34mINFO[m] Loading execution data file /var/lib/jenkins/workspace/CI-CD Project/target/jacoco.exec
+[[1;34mINFO[m] Analyzed bundle 'Spring Framework Petclinic' with 36 classes
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-war-plugin:3.4.0:war[m [1m(default-war)[m @ [36mspring-framework-petclinic[0;1m ---[m
+[[1;34mINFO[m] Packaging webapp
+[[1;34mINFO[m] Assembling webapp [spring-framework-petclinic] in [/var/lib/jenkins/workspace/CI-CD Project/target/petclinic]
+[[1;34mINFO[m] Processing war project
+[[1;34mINFO[m] Copying webapp resources [/var/lib/jenkins/workspace/CI-CD Project/src/main/webapp]
+[[1;34mINFO[m] Building war: /var/lib/jenkins/workspace/CI-CD Project/target/petclinic.war
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m-------< [0;36morg.springframework.samples:spring-framework-petclinic[0;1m >-------[m
+[[1;34mINFO[m] [1mBuilding Spring Framework Petclinic 6.2.8[m
+[[1;34mINFO[m] [1m--------------------------------[ war ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32msonar-maven-plugin:4.0.0.4121:sonar[m [1m(default-cli)[m @ [36mspring-framework-petclinic[0;1m ---[m
+[[1;33mWARNING[m] 12:40:19.811 Using an unspecified version instead of an explicit plugin version may introduce breaking analysis changes at an unwanted time. It is highly recommended to use an explicit version, e.g. 'org.sonarsource.scanner.maven:sonar-maven-plugin:4.0.0.4121'.
+[[1;34mINFO[m] 12:40:19.819 Java 17.0.18 Ubuntu (64-bit)
+[[1;34mINFO[m] 12:40:19.820 Linux 6.14.0-1018-aws (amd64)
+[[1;34mINFO[m] 12:40:19.950 User cache: /var/lib/jenkins/.sonar/cache
+[[1;34mINFO[m] 12:40:20.004 Communicating with SonarQube Server 26.2.0.119303
+[[1;34mINFO[m] 12:40:20.014 Default locale: "en", source code encoding: "UTF-8"
+[[1;33mWARNING[m] 12:40:20.217 Property 'env.SONARQUBE_SCANNER_PARAMS' is encrypted. The encryption of scanner properties is deprecated and will soon be removed.
+[[1;33mWARNING[m] 12:40:20.326 Java 17 scanner support ends with SonarQube 2026.3 (July 2026). Please upgrade to Java 21 or newer, or use JRE auto-provisioning to keep this requirement always up to date.
+[[1;34mINFO[m] 12:40:20.721 Load global settings
+[[1;34mINFO[m] 12:40:20.792 Load global settings (done) | time=71ms
+[[1;34mINFO[m] 12:40:20.804 Server id: 147B411E-AZxQYJKbVIHhD06VJ_uZ
+[[1;34mINFO[m] 12:40:20.810 Loading required plugins
+[[1;34mINFO[m] 12:40:20.810 Load plugins index
+[[1;34mINFO[m] 12:40:20.826 Load plugins index (done) | time=16ms
+[[1;34mINFO[m] 12:40:20.827 Load/download plugins
+[[1;34mINFO[m] 12:40:20.841 Load/download plugins (done) | time=15ms
+[[1;34mINFO[m] 12:40:21.227 Process project properties
+[[1;34mINFO[m] 12:40:21.241 Process project properties (done) | time=14ms
+[[1;34mINFO[m] 12:40:21.250 Project key: org.springframework.samples:spring-framework-petclinic
+[[1;34mINFO[m] 12:40:21.250 Base dir: /var/lib/jenkins/workspace/CI-CD Project
+[[1;34mINFO[m] 12:40:21.250 Working dir: /var/lib/jenkins/workspace/CI-CD Project/target/sonar
+[[1;34mINFO[m] 12:40:21.260 Load project settings for component key: 'org.springframework.samples:spring-framework-petclinic'
+[[1;34mINFO[m] 12:40:21.274 Load project settings for component key: 'org.springframework.samples:spring-framework-petclinic' (done) | time=14ms
+[[1;34mINFO[m] 12:40:21.290 Load quality profiles
+[[1;34mINFO[m] 12:40:21.341 Load quality profiles (done) | time=51ms
+[[1;34mINFO[m] 12:40:21.358 Auto-configuring with CI 'Jenkins'
+[[1;34mINFO[m] 12:40:21.386 Load active rules
+[[1;34mINFO[m] 12:40:21.766 Load active rules (done) | time=380ms
+[[1;34mINFO[m] 12:40:21.775 Load analysis cache
+[[1;34mINFO[m] 12:40:21.790 Load analysis cache (2.8 kB) | time=15ms
+[[1;34mINFO[m] 12:40:21.882 Preprocessing files...
+[[1;34mINFO[m] 12:40:22.031 4 languages detected in 99 preprocessed files (done) | time=148ms
+[[1;34mINFO[m] 12:40:22.031 0 files ignored because of scm ignore settings
+[[1;34mINFO[m] 12:40:22.033 Loading plugins for detected languages
+[[1;34mINFO[m] 12:40:22.033 Load/download plugins
+[[1;34mINFO[m] 12:40:22.046 Load/download plugins (done) | time=13ms
+[[1;34mINFO[m] 12:40:22.304 Load project repositories
+[[1;34mINFO[m] 12:40:22.407 Load project repositories (done) | time=103ms
+[[1;34mINFO[m] 12:40:22.427 Indexing files...
+[[1;34mINFO[m] 12:40:22.428 Project configuration:
+[[1;34mINFO[m] 12:40:22.451 99 files indexed (done) | time=23ms
+[[1;34mINFO[m] 12:40:22.452 Quality profile for css: Sonar way
+[[1;34mINFO[m] 12:40:22.453 Quality profile for java: Sonar way
+[[1;34mINFO[m] 12:40:22.453 Quality profile for jsp: Sonar way
+[[1;34mINFO[m] 12:40:22.453 Quality profile for xml: Sonar way
+[[1;34mINFO[m] 12:40:22.453 ------------- Run sensors on module Spring Framework Petclinic
+[[1;34mINFO[m] 12:40:22.540 Load metrics repository
+[[1;34mINFO[m] 12:40:22.556 Load metrics repository (done) | time=16ms
+[[1;34mINFO[m] 12:40:23.115 Reflections took 84 ms to scan 1 urls, producing 24 keys and 257 values
+[[1;34mINFO[m] 12:40:23.509 Sensor JavaSensor [java]
+[[1;34mINFO[m] 12:40:23.512 Configured Java source version (sonar.java.source): 17, preview features enabled (sonar.java.enablePreview): false
+[[1;34mINFO[m] 12:40:23.533 Server-side caching is enabled. The Java analyzer will not try to leverage data from a previous analysis.
+[[1;34mINFO[m] 12:40:23.535 Using ECJ batch to parse 47 Main java source files with batch size 50 KB.
+[[1;34mINFO[m] 12:40:23.807 Starting batch processing.
+[[1;34mINFO[m] 12:40:24.374 The Java analyzer cannot skip unchanged files in this context. A full analysis is performed for all files.
+[[1;34mINFO[m] 12:40:27.573 100% analyzed
+[[1;34mINFO[m] 12:40:27.573 Batch processing: Done.
+[[1;34mINFO[m] 12:40:27.575 Did not optimize analysis for any files, performed a full analysis for all 47 files.
+[[1;34mINFO[m] 12:40:27.577 Using ECJ batch to parse 11 Test java source files with batch size 50 KB.
+[[1;34mINFO[m] 12:40:27.589 Starting batch processing.
+[[1;34mINFO[m] 12:40:28.176 100% analyzed
+[[1;34mINFO[m] 12:40:28.176 Batch processing: Done.
+[[1;34mINFO[m] 12:40:28.178 Did not optimize analysis for any files, performed a full analysis for all 11 files.
+[[1;34mINFO[m] 12:40:28.178 No "Generated" source files to scan.
+[[1;34mINFO[m] 12:40:28.182 Sensor JavaSensor [java] (done) | time=4674ms
+[[1;34mINFO[m] 12:40:28.182 Sensor SurefireSensor [java]
+[[1;34mINFO[m] 12:40:28.183 parsing [/var/lib/jenkins/workspace/CI-CD Project/target/surefire-reports]
+[[1;34mINFO[m] 12:40:28.255 Sensor SurefireSensor [java] (done) | time=73ms
+[[1;34mINFO[m] 12:40:28.256 Sensor HTML [web]
+[[1;34mINFO[m] 12:40:28.380 Sensor HTML [web] (done) | time=124ms
+[[1;34mINFO[m] 12:40:28.380 Sensor XML Sensor [xml]
+[[1;34mINFO[m] 12:40:28.388 2 source files to be analyzed
+[[1;34mINFO[m] 12:40:28.631 2/2 source files have been analyzed
+[[1;34mINFO[m] 12:40:28.631 Sensor XML Sensor [xml] (done) | time=251ms
+[[1;34mINFO[m] 12:40:28.632 Sensor JaCoCo XML Report Importer [jacoco]
+[[1;34mINFO[m] 12:40:28.633 'sonar.coverage.jacoco.xmlReportPaths' is not defined. Using default locations: target/site/jacoco/jacoco.xml,target/site/jacoco-it/jacoco.xml,build/reports/jacoco/test/jacocoTestReport.xml
+[[1;34mINFO[m] 12:40:28.635 Importing 1 report(s). Turn your logs in debug mode in order to see the exhaustive list.
+[[1;34mINFO[m] 12:40:28.684 Sensor JaCoCo XML Report Importer [jacoco] (done) | time=52ms
+[[1;34mINFO[m] 12:40:28.684 Sensor IaC hadolint report Sensor [iac]
+[[1;34mINFO[m] 12:40:28.686 Sensor IaC hadolint report Sensor [iac] (done) | time=1ms
+[[1;34mINFO[m] 12:40:28.686 Sensor Java Config Sensor [iac]
+[[1;34mINFO[m] 12:40:28.698 There are no files to be analyzed for the Java language
+[[1;34mINFO[m] 12:40:28.699 Sensor Java Config Sensor [iac] (done) | time=13ms
+[[1;34mINFO[m] 12:40:28.699 Sensor IaC Docker Sensor [iac]
+[[1;34mINFO[m] 12:40:28.703 There are no files to be analyzed for the Docker language
+[[1;34mINFO[m] 12:40:28.703 Sensor IaC Docker Sensor [iac] (done) | time=4ms
+[[1;34mINFO[m] 12:40:28.703 Sensor CSS Rules [javascript]
+[[1;34mINFO[m] 12:40:28.932 Detected os: Linux arch: amd64 alpine: false. Platform: LINUX_X64
+[[1;34mINFO[m] 12:40:28.933 Deploy location /var/lib/jenkins/.sonar/js/node-runtime, tagetRuntime: /var/lib/jenkins/.sonar/js/node-runtime/node,  version: /var/lib/jenkins/.sonar/js/node-runtime/version.txt
+[[1;34mINFO[m] 12:40:28.944 Using embedded Node.js runtime.
+[[1;34mINFO[m] 12:40:28.944 Using Node.js executable: '/var/lib/jenkins/.sonar/js/node-runtime/node'.
+[[1;34mINFO[m] 12:40:30.668 Memory configuration: OS (3816 MB), Node.js (2100 MB).
+[[1;34mINFO[m] 12:40:30.865 WebSocket client connected on /ws
+[[1;34mINFO[m] 12:40:30.869 5 source files to be analyzed
+[[1;34mINFO[m] 12:40:32.831 5/5 source files have been analyzed
+[[1;34mINFO[m] 12:40:32.831 Hit the cache for 0 out of 0
+[[1;34mINFO[m] 12:40:32.832 Miss the cache for 0 out of 0
+[[1;34mINFO[m] 12:40:32.832 Sensor CSS Rules [javascript] (done) | time=4129ms
+[[1;34mINFO[m] 12:40:32.832 Sensor CSS Metrics [javascript]
+[[1;34mINFO[m] 12:40:33.080 Sensor CSS Metrics [javascript] (done) | time=248ms
+[[1;34mINFO[m] 12:40:33.080 Sensor TextAndSecretsSensor [text]
+[[1;34mINFO[m] 12:40:33.090 Available processors: 2
+[[1;34mINFO[m] 12:40:33.091 Using 2 threads for analysis.
+[[1;34mINFO[m] 12:40:33.386 Start fetching files for the text and secrets analysis
+[[1;34mINFO[m] 12:40:33.393 Using Git CLI to retrieve dirty files
+[[1;34mINFO[m] 12:40:33.398 Retrieving language associated files and files included via "sonar.text.inclusions" that are tracked by git
+[[1;34mINFO[m] 12:40:33.400 Starting the text and secrets analysis
+[[1;34mINFO[m] 12:40:33.402 74 source files to be analyzed for the text and secrets analysis
+[[1;34mINFO[m] 12:40:33.542 74/74 source files have been analyzed for the text and secrets analysis
+[[1;34mINFO[m] 12:40:33.545 Sensor TextAndSecretsSensor [text] (done) | time=465ms
+[[1;34mINFO[m] 12:40:33.548 ------------- Run sensors on project
+[[1;34mINFO[m] 12:40:33.661 Sensor JavaProjectSensor [java]
+[[1;34mINFO[m] 12:40:33.664 Sensor JavaProjectSensor [java] (done) | time=3ms
+[[1;34mINFO[m] 12:40:33.665 Sensor Zero Coverage Sensor
+[[1;34mINFO[m] 12:40:33.666 Sensor Zero Coverage Sensor (done) | time=1ms
+[[1;34mINFO[m] 12:40:33.667 Sensor Java CPD Block Indexer
+[[1;34mINFO[m] 12:40:33.730 Sensor Java CPD Block Indexer (done) | time=64ms
+[[1;34mINFO[m] 12:40:33.730 ------------- Gather SCA dependencies on project
+[[1;34mINFO[m] 12:40:33.732 Dependency analysis skipped
+[[1;34mINFO[m] 12:40:33.746 CPD Executor 20 files had no CPD blocks
+[[1;34mINFO[m] 12:40:33.746 CPD Executor Calculating CPD for 36 files
+[[1;34mINFO[m] 12:40:33.767 CPD Executor CPD calculation finished (done) | time=19ms
+[[1;34mINFO[m] 12:40:33.775 SCM revision ID '5c5f13371e506e0a1272842f69e92e91262abf18'
+[[1;34mINFO[m] 12:40:33.923 Analysis report generated in 145ms, dir size=990.1 kB
+[[1;34mINFO[m] 12:40:34.022 Analysis report compressed in 98ms, zip size=314.8 kB
+[[1;34mINFO[m] 12:40:34.047 Analysis report uploaded in 25ms
+[[1;34mINFO[m] 12:40:34.050 ANALYSIS SUCCESSFUL, you can find the results at: http://3.110.227.215:9000/dashboard?id=org.springframework.samples%3Aspring-framework-petclinic
+[[1;34mINFO[m] 12:40:34.050 Note that you will be able to access the updated dashboard once the server has processed the submitted analysis report
+[[1;34mINFO[m] 12:40:34.050 More about the report processing at http://3.110.227.215:9000/api/ce/task?id=48fafe96-8a9d-416f-93a7-69810c0f92f2
+[[1;34mINFO[m] 12:40:34.166 Analysis total time: 13.283 s
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;32mBUILD SUCCESS[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  31.586 s
+[[1;34mINFO[m] Finished at: 2026-02-12T12:40:34Z
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[Pipeline] }
+[Pipeline] // withSonarQubeEnv
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (nexus)
+[Pipeline] nexusArtifactUploader
+Uploading artifact petclinic.war started....
+GroupId: org.springframework.samples
+ArtifactId: spring-framework-petclinic
+Classifier: 
+Type: war
+Version: 6.2.8
+File: petclinic.war
+Repository:spring-petclinic
+Uploading: http://13.127.192.178:8081/repository/spring-petclinic/org/springframework/samples/spring-framework-petclinic/6.2.8/spring-framework-petclinic-6.2.8.war
+10 % completed (5.0 MB / 46 MB).
+20 % completed (9.6 MB / 46 MB).
+30 % completed (14 MB / 46 MB).
+40 % completed (19 MB / 46 MB).
+50 % completed (23 MB / 46 MB).
+60 % completed (28 MB / 46 MB).
+70 % completed (33 MB / 46 MB).
+80 % completed (37 MB / 46 MB).
+90 % completed (42 MB / 46 MB).
+100 % completed (46 MB / 46 MB).
+Uploaded: http://13.127.192.178:8081/repository/spring-petclinic/org/springframework/samples/spring-framework-petclinic/6.2.8/spring-framework-petclinic-6.2.8.war (46 MB at 85 MB/s)
+Uploading artifact petclinic.war completed.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (tomcat)
+[Pipeline] sshagent
+[ssh-agent] Using credentials ubuntu (credentials for tomcat)
+$ ssh-agent
+SSH_AUTH_SOCK=/tmp/ssh-uGfsm0YzrTCW/agent.23386
+SSH_AGENT_PID=23389
+Running ssh-add (command line suppressed)
+Identity added: /var/lib/jenkins/workspace/CI-CD Project@tmp/private_key_14236729661062946108.key (/var/lib/jenkins/workspace/CI-CD Project@tmp/private_key_14236729661062946108.key)
+[ssh-agent] Started.
+[Pipeline] {
+[Pipeline] sh
++ scp -o StrictHostKeyChecking=no target/petclinic.war ubuntu@13.200.21.19:/home/ubuntu/apache-tomcat-10.1.52/webapps
+Warning: Permanently added '13.200.21.19' (ED25519) to the list of known hosts.
+[Pipeline] }
+$ ssh-agent -k
+unset SSH_AUTH_SOCK;
+unset SSH_AGENT_PID;
+echo Agent pid 23389 killed;
+[ssh-agent] Stopped.
+[Pipeline] // sshagent
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
